@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  <mapper namespace="com.hd.dao.computerDao">
+  	<select id = "getquery"  resultType="com.hd.model.computer">
+  		select * from computer
+  	</select>
+  	<select id = "getquerybrand"  resultType="com.hd.model.computer">
+  		select distinct CBrand from computer
+  	</select>
+  	<select id = "getquerycomputerbrand"  resultType="com.hd.model.computer">
+  		select  CBrand from computer where CBrand=#{computerbrand}
+  	</select>
+  	<select id="save" parameterType = "com.hd.model.computer"> 
+  	insert into computer (CID,goods_id,CName,CText,CBrand,CColour,CSize,CPBase,CPShi,CSellTime,CPrice,CCPU,CCPUSpeed,CVCard,CFenbian,COS,CBType,CMemoryCapacity,CHDCapacity,CXiancun,CBattery,CBaoxiu,CD_ROM,CSolidSDisk,CSType,CPort,CAudio,CPlist,CWeight,CStock) 
+  	values(#{CID},#{goods_id},#{CName},#{CText},#{CBrand},#{CColour},#{CSize},#{CPBase},#{CPShi},#{CSellTime},#{CPrice},#{CCPU},#{CCPUSpeed},#{CVCard},#{CFenbian},#{COS},#{CBType},#{CMemoryCapacity},#{CHDCapacity},#{CXiancun},#{CBattery},#{CBaoxiu},#{CD_ROM},#{CSolidSDisk},#{CSType},#{CPort},#{CAudio},#{CPlist},#{CWeight},#{CStock})
+  	 </select>
+  	 <select id="delete" parameterType="String">
+             delete from computer where CID = #{CID}
+      </select>
+            <select id="update" parameterType="com.hd.model.computer">
+            update computer set 
+              CID,
+              goods_id=#{goods_id},
+              CName=#{CName},
+              CText=#{CText},
+              CBrand=#{CBrand},
+              CColour=#{CColour},
+              CSize=#{CSize},
+              CPBase=#{CPBase},
+              CPShi=#{CPShi},
+              CSellTime=#{CSellTime},
+              CPrice=#{CPrice},
+              CCPU=#{CCPU},
+              CCPUSpeed=#{CCPUSpeed},
+              CVCard=#{CVCard},
+              CFenbian=#{CFenbian},
+              COS=#{COS},
+              CBType=#{CBType},
+              CMemoryCapacity=#{CMemoryCapacity},
+              CHDCapacity=#{CHDCapacity},
+              CXiancun=#{CXiancun},
+              CBattery=#{CBattery},
+              CBaoxiu=#{CBaoxiu},
+              CD_ROM=#{CD_ROM},
+              CSolidSDisk=#{CSolidSDisk},
+              CSType=#{CSType},
+              CPort=#{CPort},
+              CAudio=#{CAudio},
+              CPlist=#{CPlist},
+              CWeight=#{CWeight},
+              CStock={CStock}
+              where CID=#{CID}
+      </select>
+  </mapper>

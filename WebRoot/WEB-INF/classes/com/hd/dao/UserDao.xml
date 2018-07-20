@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  <mapper namespace="com.hd.dao.UserDao">
+      <select id = "query"  resultType = "cjw_user">
+            select * from cjw_user
+      </select>
+      <select  id = "delete"  parameterType = "cjw_user">
+        delete from cjw_user where id = #{id}
+      </select>
+      
+      <select id = "findbyID"  parameterType = "cjw_user" resultType = "cjw_user" >
+        select * from cjw_user where id =  #{id}
+      </select>
+      <select id = "update"  parameterType = "cjw_user" >
+         update cjw_user set name =#{name},sex = #{sex},password = #{password} ,age = #{age} where id = #{id}
+      </select>
+      <select id = "add"  parameterType = "cjw_user">
+        insert into cjw_user(name,age,sex,password) values(#{name},#{age},#{sex},#{password})
+      </select>
+  </mapper>

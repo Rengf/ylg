@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.hd.dao.phoneDao">
+  	<select id = "getquery"  resultType="com.hd.model.phone">
+  		select * from phone
+  	</select>
+  	<select id="save" parameterType = "com.hd.model.phone"> 
+  	insert into phone (PID,goods_id,PName,PPrice,PPictureBig,PPictureShiPai,PBrand,PKeys,PBattery,PSellTime,PFCharge,POS,PSize,PRam,PRom,PCPU,PHPixel,PBPixel,PColour,PNFC,PBT,PEarport,PCport,PZhiwen,PGPS,PDZLP,PTLY,PList,PStock,P3DTouch,PNet,SIM) 
+  	values(#{PID},#{goods_id},#{PName},#{PPrice},#{PPictureBig},#{PPictureShiPai},#{PBrand},#{PKeys},#{PBattery},#{PSellTime},#{PFCharge},#{POS},#{PSize},#{PRam},#{PRom},#{PCPU},#{PHPixel},#{PBPixel},#{PColour},#{PNFC},#{PBT},#{PEarport},#{PCport},#{PZhiwen},#{PGPS},#{PDZLP},#{PTLY},#{PList},#{PStock},#{P3DTouch},#{PNet},#{SIM})
+  	 </select>
+  	 <select id = "getquerybrand"  resultType="com.hd.model.phone">
+  		select distinct PBrand from phone
+  	</select>
+  	<select id = "getqueryphonebrand"  resultType="com.hd.model.phone">
+  		select * from phone where PBrand=#{phonebrand}
+  	</select>
+  	 <select id="delete" parameterType="String">
+             delete from phone where PID = #{PID}
+      </select>
+        <select id = "queryphone"  parameterType = "phone" resultType = "phone">
+            select * from phone  where PID = #{PID}
+      </select>
+       <select id="update" parameterType="com.hd.model.phone">
+         update phone 
+         set goods_id=#{goods_id},
+         PName=#{PName},
+         PPrice=#{PPrice},
+         PPictureBig=#{PPictureBig},
+         PPictureShiPai=#{PPictureShiPai},
+         PBrand=#{PBrand},
+         PKeys=#{PKeys},
+         PBattery=#{PBattery},
+         PSellTime=#{PSellTime},
+         PFCharge=#{PFCharge},
+         POS=#{POS},
+         PSize=#{PSize},
+         PRam=#{PRam},
+         PRom=#{PRom},
+         PCPU=#{PCPU},
+         PHPixel=#{PHPixel},
+         PBPixel=#{PBPixel},
+         PColour=#{PColour},
+         PNFC=#{PNFC},
+         PBT=#{PBT},
+         PEarport=#{PEarport},
+         PCport=#{PCport},
+         PZhiwen=#{PZhiwen},
+         PGPS=#{PGPS},
+         PDZLP=#{PDZLP},
+         PTLY=#{PTLY},
+         PList=#{PList},
+         PStock=#{PStock},
+         P3DTouch=#{P3DTouch},
+         PNet=#{PNet},
+         SIM=#{SIM}
+     where PID = #{PID}
+      </select>
+  </mapper>

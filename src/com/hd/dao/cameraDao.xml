@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.hd.dao.cameraDao">
+  	<select id = "getquery"  resultType="com.hd.model.camera">
+  		select * from camera
+  	</select>
+  	<select id = "getquerybrand"  resultType="com.hd.model.camera">
+  		select distinct CaBrand from camera
+  	</select>
+  	<select id = "getquerycamerabrand"  resultType="com.hd.model.camera">
+  		select  CaBrand from camera where CaBrand=#{camerabrand}
+  	</select>
+  	<select id="save" parameterType = "com.hd.model.camera"> 
+  	insert into camera(CaID,goods_id,CaName,CaPrice,CaPicture,CaProduce,CaSLRLevel,CaSize,CaPixel,CaStorageM,CaWeatherStable,CaBrand,CaTimeToMarket,CaSummary,CaLenMount,CaSType,CaPort,CaBT,CaList,CaStock,CaSpeed,CaKeys) 
+  	values(#{CaID},#{goods_id},#{CaName},#{CaPrice},#{CaPicture},#{CaProduce},#{CaSLRLevel},#{CaSize},#{CaPixel},#{CaStorageM},#{CaWeatherStable},#{CaBrand},#{CaTimeToMarket},#{CaSummary},#{CaLenMount},#{CaSType},#{CaPort},#{CaBT},#{CaList},#{CaStock},#{CaSpeed},#{CaKeys})
+  	 </select>
+  	 <select id="delete" parameterType="String">
+             delete from camera where CaID = #{CaID}
+      </select>
+        <select id = "querycamera"  parameterType = "camera" resultType = "camera">
+            select * from camera  where CaID = #{CaID}
+      </select>
+       <select id="update" parameterType="com.hd.model.camera">
+          update computer set
+            goods_id=#{goods_id},
+            CaName=#{CaName},
+            CaPrice=#CaPrice},
+            CaPicture=#{CaPicture},
+            CaProduce=#{CaProduce},
+            CaSLRLevel=#{CaSLRLevel},
+            CaSize=#{CaSize},
+            CaPixel=#{CaPixel},
+            CaStorageM=#{CaStorageM},
+            CaWeatherStable=#{CaWeatherStable},
+            CaBrand=#{CaBrand},
+            CaTimeToMarket=#{CaTimeToMarket},
+            CaSummary=#{CaSummary},
+            CaLenMount=#{CaLenMount},
+            CaSType=#{CaSType},
+            CaPort=#{CaPort},
+            CaBT=#{CaBT},
+            CaList=#{CaList},
+            CaStock=#{CaStock},
+            CaSpeed=#{CaSpeed},
+            CaKeys=#{CaKeys}
+            where CaID=#{CaID}
+      </select>
+  </mapper>

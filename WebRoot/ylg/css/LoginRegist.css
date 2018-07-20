@@ -1,0 +1,189 @@
+.header {
+    height: 150px;
+    width: 100%;
+    background: #ccc
+}
+
+.body {
+    width: 80%;
+    height: 600px;
+    margin: auto;
+    border: 1px solid #ccc
+}
+
+.registAdvertising,
+.loginAdvertising {
+    width: 65%;
+    height: 600px;
+    float: left;
+    background: #cfac12;
+}
+
+.loginFrme {
+    width: 35%;
+    height: 400px;
+    float: left;
+    border-bottom: 1px solid #ccc
+}
+
+.protectFrme,
+.registFrme {
+    width: 35%;
+    height: 600px;
+    float: left;
+    border-bottom: 1px solid #ccc
+}
+
+.protectHeader,
+.registHeader,
+.loginHeader {
+    width: 90%;
+    height: 40px;
+    margin: 10px auto;
+    border-bottom: 1px solid #ddd
+}
+
+.registHeader span,
+.loginHeader span {
+    display: block;
+    font-size: 24px;
+    font-weight: bold;
+    line-height: 40px;
+    color: #333;
+    width: 100%;
+    text-align: center;
+}
+
+.protectErrorMessage,
+.registErrorMessage,
+.loginErrorMessage {
+    width: 90%;
+    height: 25px;
+    margin: 20px auto;
+}
+
+.protectErrorMessage p,
+.registErrorMessage p,
+.loginErrorMessage p {
+    display: block;
+    width: 100%;
+    height: 25px;
+    border: 1px solid #ffcc00;
+    background: #ffff99;
+    color: #ff0000;
+    line-height: 25px;
+    font-size: 12px;
+    text-indent: 1em
+}
+
+.user,
+.password {
+    position: relative;
+    z-index: 1;
+    border: 1px solid #bdbdbd;
+    height: 40px;
+    width: 90%;
+    margin: 15px auto;
+}
+
+.userLable {
+    position: absolute;
+    z-index: 3;
+    width: 40px;
+    height: 40px;
+    background: url(../images/user.png) no-repeat #ccc;
+    background-position: center;
+    background-size: 70% 70%;
+    -moz-background-size: 70% 70%;
+}
+
+.passwordLable {
+    position: absolute;
+    z-index: 3;
+    width: 40px;
+    height: 40px;
+    background: url(../images/suo.png) no-repeat #ccc;
+    background-position: center;
+    background-size: 70% 70%;
+    -moz-background-size: 70% 70%;
+}
+
+.userInput,
+.passwordInput {
+    line-height: 20px;
+    border: 0;
+    padding: 10px 0 10px 50px;
+    width: 268px;
+    float: none;
+    overflow: hidden;
+    font-size: 14px;
+    font-family: '\5b8b\4f53';
+    outline: none
+}
+
+.forget {
+    width: 90%;
+    height: 20px;
+    margin: auto;
+}
+
+.forget p {
+    width: 100%;
+    height: 20px;
+    font-size: 12px;
+    text-align: right;
+}
+
+.submit {
+    width: 90%;
+    height: 35px;
+    margin: auto;
+}
+
+.submit input {
+    width: 100%;
+    height: 35px;
+    background: #ff0000;
+    border: none;
+    color: aliceblue;
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.footer {
+    width: 100%;
+    height: 50px;
+    text-align: center;
+    line-height: 50px;
+}
+
+.inputBox {
+    position: relative;
+    z-index: 1;
+    height: 40px;
+    width: 90%;
+    margin: 15px auto;
+    line-height: 40px;
+}
+
+.inputBox span {
+    width: 80px;
+    float: left;
+    line-height: 40px;
+    letter-spacing: 10px;
+    font-size: 15px;
+    text-align: right;
+}
+
+.input select,
+.inputBox input {
+    height: 40px;
+    width: 224px;
+    padding: 2px 5px;
+}
+
+.select {
+    height: 30px;
+    width: 223px;
+    padding: 2px 5px;
+}

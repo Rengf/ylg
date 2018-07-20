@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  <mapper namespace="com.hd.dao.user_infoDao">
+  	<select id = "getquery"  resultType="com.hd.model.user_infoModel">
+  		select * from user_info
+  	</select>
+  	<select id="save" parameterType = "com.hd.model.user_infoModel">
+  			insert into user_info (user_type,user_pwd,user_name,pwd_qus,pwd_asr,user_tel,user_email,user_sex) values(#{user_type},#{user_pwd},#{user_name},#{pwd_qus},#{pwd_asr},#{user_tel},#{user_email},#{user_sex})
+  	</select>
+  	<select id="checkLogin" resultType = "user_infoModel">
+  			select * from user_info where user_name=#{user_name} and user_pwd=#{user_pwd}
+  	</select>
+  	<select id="deleteuser_info" parameterType="String">
+             delete from user_info where user_id = #{user_id}
+      </select>
+      <select id="selectByname" parameterType="String" resultType="com.hd.model.user_infoModel">
+             select * from user_info where user_name=#{user_name}
+      </select>
+      <select id="selectById" parameterType="int" resultType="com.hd.model.user_infoModel"> 
+         select * from user_info where user_id = #{user_id}
+     </select>
+  </mapper>

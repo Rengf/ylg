@@ -1,0 +1,203 @@
+.goodsDetails {
+    width: 1200px;
+    height: 818px;
+    margin: auto;
+    border: 1px solid #888;
+}
+
+.goodsDetailsImg {
+    margin-top: 50px;
+    float: left;
+    width: 500px;
+    height: 500px;
+    border: 1px solid #ddd;
+}
+
+.goodsDetailsImg img {
+    display: block;
+    margin: 50px auto;
+    width: 400px;
+    height: 400px;
+}
+
+.goodsDetailsMsg {
+    margin-top: 50px;
+    width: 598px;
+    height: 500px;
+    margin-left: 100px;
+    float: left;
+}
+
+.goodsDetailsMsg span {
+    display: block;
+    height: 35px;
+    font-size: 14px;
+    font-weight: normal;
+    line-height: 35px;
+    color: #585858;
+}
+
+.goodsDetailsMsg span i {
+    display: inline-block;
+    margin-left: 20px;
+}
+
+.goodsDetailsMsgHeader span:nth-child(3)>i {
+    font-size: 40px;
+    color: #076ce0;
+    font-weight: bold;
+    vertical-align: middle;
+}
+
+.goodsDetailsMsgHeader {
+    height: 170px;
+    border-bottom: 1px solid #ddd;
+}
+
+.goodsDetailsMsgHeader h3 {
+    display: block;
+    margin-bottom: 50px;
+    font-size: 20px;
+    font-weight: normal;
+    color: #585858;
+}
+
+.goodsDetailsMsgFooter,
+.goodsDetailsMsgBody {
+    height: 74px;
+    border-bottom: 1px solid #ddd;
+}
+
+.goodsDetailsMsgNumber {
+    border-bottom: 1px solid #ddd;
+}
+
+.buyNumber span {
+    position: relative;
+    height: 35px;
+    display: inline-block;
+    line-height: 35px;
+}
+
+.buyNumber input {
+    width: 50px;
+    text-align: center;
+    height: 40px;
+    font-size: 20px;
+}
+
+.buyNumber span>i {
+    text-align: center;
+    font-size: 15px;
+    font-weight: bold;
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    display: block;
+    line-height: 20px;
+    border: 1px solid #aaa;
+}
+
+.buyNumber span i:nth-child(1) {
+    position: absolute;
+    top: 7px;
+    left: 0px
+}
+
+.buyNumber span i:nth-child(2) {
+    position: absolute;
+    top: 30px;
+    left: 0px;
+}
+
+.stockNumber {
+    margin-top: 20px;
+}
+
+.goodsDetailsMsgButton {
+    margin-top: 20px;
+    height: 42px;
+}
+
+.goodsDetailsMsgButton a {
+    display: inline-block;
+    height: 40px;
+    width: 160px;
+    text-align: center;
+    line-height: 40px;
+    border: 1px solid #076ce0;
+    margin-right: 50px;
+    border-radius: 5px;
+    color: #076ce0;
+}
+
+.otherOperation {
+    clear: both;
+    position: relative;
+    width: 100%;
+    height: 200px;
+}
+
+.otherOperationShare {
+    width: 500px;
+    height: 27px;
+}
+
+.otherOperationShare li {
+    width: 90px;
+    height: 30px;
+    float: left;
+}
+
+.otherOperationShare li a:hover {
+    color: #076ce0;
+}
+
+.otherOperationShare li a {
+    position: relative;
+    width: 90px;
+    height: 30px;
+    display: inline-block;
+    text-align: center;
+    line-height: 30px;
+    color: #555;
+}
+
+.otherOperationShare li i {
+    position: absolute;
+    left: 0px;
+    width: 30px;
+    height: 30px;
+    display: inline-block;
+}
+
+.otherOperationShare li:nth-child(1)>a>i {
+    background: url(../images/vbg01.png) no-repeat;
+    background-position: -525px -2005px;
+}
+
+.otherOperationShare li:nth-child(2)>a>i {
+    background: url(../images/vbg01.png) no-repeat;
+    background-position: 0px -135px;
+}
+
+.prevGoods {
+    margin-top: 20px;
+    width: 500px;
+    height: 30px;
+    line-height: 30px;
+}
+
+.nextGoods {
+    width: 500px;
+    height: 30px;
+    line-height: 30px;
+}
+
+.nextGoods span,
+.nextGoods a,
+.prevGoods span,
+.prevGoods a {
+    color: #555;
+    font-size: 15px
+}

@@ -1,0 +1,182 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  <mapper namespace="com.hd.dao.sysDao">
+  <resultMap type="sysUser" id="sysUserMap" autoMapping="true">
+		<result column="userid" property="id" />
+		<collection property="role" ofType = "com.hd.model.sysRole" javaType="java.util.ArrayList">
+			<result column="roleid" property="id" />
+			<result column="rolename" property="rolename" />
+		</collection>
+	</resultMap>
+	<resultMap type="sysRole" id="sysRoleMap" autoMapping="true">
+		<result column="roleid" property="id" />
+		<collection property="menu" ofType = "com.hd.model.sysMenu" javaType="java.util.ArrayList">
+			<result column="menuid" property="id" />
+		</collection>
+	</resultMap>
+	<!-- parameterType -->
+	<select id = "queeryMenu">
+		
+	</select>
+      <select id = "queryMenu"  parameterType = "java.lang.Integer" resultType = "sysMenu">
+            select * from sysmenu where menurevel = #{menurevel}
+      </select>
+      <select id = "sysmenuList"   parameterType = "sysMenu" resultType = "sysMenu">
+            select * from sysmenu 
+            <where>
+               1 = 1 
+               <if test="menuname!=null and menuname!=''">
+                  and menuname  like '%${menuname}%'
+               </if>
+               <if test="prendid!=null and prendid!=''">
+                  and prendid  = #{prendid}
+               </if>
+               <if test="menurevel>0">
+                  and menurevel = #{menurevel}
+               </if>
+               <if test="menuaddress!=null and menuaddress!=''">
+                  and menuaddress  like '%${menuaddress}%'
+               </if>
+            </where>
+      </select>
+       <select id = "initMenu"  parameterType = "String" resultType = "combobox">
+            select dictid AS id , dicttext as text   from sysdict where dicttype = #{str}
+      </select>
+      <select id = "sysmenuListAll"  parameterType = "String" resultType = "combobox">
+            select id, menuname as text from sysmenu  where menurevel = #{str}
+      </select>
+      <select id = "saveMenu"  parameterType = "sysMenu">
+            insert into sysmenu(id,menuname,prendid,menurevel,menuaddress) value (#{id},#{menuname},#{prendid},#{menurevel},#{menuaddress})
+      </select>
+        <select id = "queryMenuOne"  parameterType = "sysMenu" resultType = "sysMenu">
+            select * from sysmenu  where id = #{id}
+      </select>
+         <select id = "updateMenu"  parameterType = "sysMenu" >
+            update sysmenu set menuname = #{menuname} ,prendid = #{prendid},menurevel = #{menurevel},menuaddress = #{menuaddress} where id = #{id}
+      </select>
+       <select id = "deleteMenu"  parameterType = "String" >
+             delete from sysmenu where id in (select n.id from ((select id from sysmenu where id = #{id}) union (select id from sysmenu where prendid = #{id})) as n)
+      </select>
+      <select id = "sysDataDictionaryList" parameterType="sysDict" resultType = "sysDict">
+      	select * from sysdict
+      	<where>
+      	 	 1=1 
+      	 	<if test="dictremark!=null and dictremark!=''">
+      	 		 and dictremark like '%${dictremark}%' 
+      	 	</if>
+      	 	<if test="dicttype!=null and dicttype!=''">
+      	 		 and dicttype like '%${dicttype}%'
+      	 	</if>
+      	</where>
+      </select>
+      <select id="updateDataDictionary" parameterType="sysDict">
+            update sysdict set dicttext = #{dicttext} ,dicttype = #{dicttype},dictremark = #{dictremark},dictid = #{dictid} where id = #{id}
+      </select>
+        <select id="saveDataDictionary" parameterType="sysDict">
+            insert into sysdict(id,dictid,dicttext,dicttype,dictremark) value (#{id},#{dictid},#{dicttext},#{dicttype},#{dictremark})
+      </select>
+        <select id="deleteDataDictionary" parameterType="String">
+             delete from sysdict where id = #{id}
+      </select>
+      <select id="queryDataDictionaryOne" resultType="sysDict">
+      	select * from sysDict where id = #{id}
+      </select>
+      <select id="sysUserList" parameterType="sysUser" resultType="sysUser">
+      	select * from sysUser
+      	<where>
+      	 	 1=1 
+      	 	<if test="username!=null and username!=''">
+      	 		 and username like '%${username}%' 
+      	 	</if>
+      	 	<if test="password!=null and password!=''">
+      	 		 and password like '%${password}%'
+      	 	</if>
+      	</where>
+      </select>
+      
+       <select id="saveUser" parameterType="sysUser" >
+            insert into sysuser(id,username,password) value (#{id},#{username},#{password})
+      </select>
+      <select id="queryUserOne" resultType="sysUser" parameterType="sysUser">
+      	select * from sysuser where id = #{id}
+      </select>
+       <select id = "deleteUser"  parameterType = "String" >
+             delete from sysUser where id =  #{id}
+      </select>
+       <select id="updateUser" parameterType="sysUser">
+            update sysUser set username = #{username},password = #{password} where id = #{id}
+      </select>
+      <select id="sysRoleList" parameterType="sysRole" resultType="sysRole" >
+           SELECT * FROM SYSROLE 
+           	<where>
+      	 	 1=1 
+      	 	<if test="rolename!=null and rolename!=''">
+      	 		 and rolename like '%${rolename}%' 
+      	 	</if>
+      	</where>
+      </select>
+      <select id = "getUserToRoleOne" parameterType="sysUser" resultMap="sysUserMap">
+        select * from userandrole where userid = #{id}
+      </select>
+       <select id = "getRoleToMenuOne" parameterType="sysRole" resultMap="sysRoleMap">
+        select * from roleandmenu where roleid = #{id} 
+      </select>
+      <select id = "queryToRole" parameterType="sysUser" resultMap="sysUserMap">
+        select * from userandrole where userid = #{id}  and  roleid = #{sysrole.id}
+      </select>
+      <select id = "ToRole" parameterType="sysUser" >
+            insert into userandrole(userid,roleid) value (#{id},#{sysrole.id})
+      </select>
+      
+      <select id = "restToRole" parameterType="sysUser" >
+           delete from userandrole where userid = #{id} and roleid = #{sysrole.id} 
+      </select>
+        <select id="updateRole" parameterType="sysRole">
+            update sysRole set rolename = #{rolename} where id = #{id}
+      </select>
+       <select id="saveRole" parameterType="sysRole" >
+            insert into sysRole(id,rolename) value (#{id},#{rolename})
+      </select>
+       <select id = "deleteRole"  parameterType = "String" >
+             delete from sysRole where id =  #{id}
+      </select>
+      
+      <select id = "queryRoleOne" parameterType="sysRole" resultType="sysRole">
+        select * from sysRole where id = #{id} 
+      </select>
+       <select id = "restToMenu" parameterType="sysRole" >
+             delete from roleandmenu where roleid =  #{id} and menuid = #{sysmenu.id}
+      </select>
+      <select id = "queryToMenu" parameterType="sysRole" resultMap="sysRoleMap" >
+        select * from roleandmenu where roleid = #{id}  and  menuid = #{sysmenu.id}
+      </select>
+      <select id = "ToMenu" parameterType="sysRole" >
+            insert into roleandmenu(roleid,menuid) value (#{id},#{sysmenu.id})
+      </select>
+       <select id = "sysxuesheng"  resultType="xsb"  >
+           select * from xsb
+      </select>
+      
+       <select id="updatexuesheng" parameterType="xsb">
+            update xsb set xsmc = #{xsmc},bjid = #{bjid},xsnn = #{xsnn},sfzhm = #{sfzhm},sjhm = #{sjhm} where xsid = #{xsid}
+      </select>
+      
+       <select id = "savexuesheng" parameterType="xsb" >
+            insert into xsb(xsid,bjid,xsmc,xsnn,sfzhm,sjhm) value (#{xsid},#{bjid},#{xsmc},#{xsnn},#{sfzhm},#{sjhm})
+      </select>
+      
+      <select id = "initxuesheng" resultType="combobox" >
+         select id , bjmc as text from bjtable 
+      
+       </select>
+       <select id = "queryxueshengOne" resultType="xsb" >
+         select * from xsb where xsid =  #{xsid}
+      
+       </select>
+        <select id = "deletexuesheng" parameterType="sysRole" >
+             delete from xsb where xsid =  #{id} 
+      </select>
+       
+  </mapper>
